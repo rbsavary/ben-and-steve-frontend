@@ -2,7 +2,7 @@ const About = (props) => {
     return (
     <>
         <div>
-            <img src="https://i.imgur.com/tCtDXuS.jpeg"/>
+            <img src="https://i.imgur.com/edugMv6.jpeg"/>
         </div>
         <div>
             <h2>About</h2>
@@ -14,7 +14,7 @@ const About = (props) => {
 
             <p>We believe that personal development is an ongoing process, and that's why we are constantly updating our content to provide you with the latest and most effective strategies for self-improvement. With Habitude, you will have access to a supportive community of like-minded individuals who are all working towards the same goal - becoming the best version of themselves.</p>
 
-            <p>Taking you to new heights and helping you get to the top of the mountain, usnleash your full potential and achieve the life of your dreams together on Habitude.</p>
+            <p>Taking you to new heights and helping you get to the top of the mountain, unleash your full potential and achieve the life of your dreams together on Habitude.</p>
         </div>
     </>
     )

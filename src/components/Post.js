@@ -1,4 +1,4 @@
-const Blog = (props) => {
+const Post = (props) => {
  
     return (
         <>
@@ -15,4 +15,4 @@ const Blog = (props) => {
     )
 }
 
-export default Blog
+export default Post

@@ -1,14 +1,14 @@
 import {useState} from 'react'
 const Edit = (props) => {
-  const [blog, setBlog] = useState({...props.blog})
+  const [post, setPost] = useState({...props.post})
 
   const handleChange = (event) => {
-    setBlog({...blog, [event.target.name]: event.target.value})
+    setPost({...post, [event.target.name]: event.target.value})
    }
 
    const handleSubmit = (event) => {
       event.preventDefault()
-      props.handleEdit(blog)
+      props.handleEdit(post)
    }
 
   return(
