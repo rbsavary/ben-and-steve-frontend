@@ -1,23 +1,24 @@
 const Header = (props) => {
- 
-    return (
-        <>
-          <div>
-            <h1>Habitude</h1>
-          </div>
-          <div>
-            <nav>
-              <ul>
-                  <a href="#">about</a>
-                  <a href="#">articles</a>
-                  <a href="#">add</a>
-                  <a href="#">contact</a>
-                <input type="text" placeholder="Search..."/>
-              </ul>
-            </nav>
-          </div>
-        </>
-    )
+
+  return (
+    <div className="app-header">
+      <h1>Habitude</h1>
+      <nav>
+        <ul className="nav-bar">
+          <li>
+            <a href="/about">about</a>
+          </li>
+          <li>
+            <a href="/add">add</a>
+          </li>
+          <li>
+            <a href="/contact">contact</a>
+          </li>
+          <input type="text" placeholder="Search..." />
+        </ul>
+      </nav>
+    </div>
+  )
 }
 
 export default Header
