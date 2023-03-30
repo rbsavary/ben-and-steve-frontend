@@ -19,6 +19,7 @@ code {
   background-color: black;
   color: #fff;
   padding-top: 2em;
+  margin-bottom: 10px;
 }
 
 nav > ul {
@@ -42,4 +43,13 @@ nav a {
 
 nav a:hover {
   color: grey;
+}
+
+h1 a {
+  text-decoration: none;
+  color: #fff;
+}
+
+h1 a:hover {
+  color: #fff;
 }

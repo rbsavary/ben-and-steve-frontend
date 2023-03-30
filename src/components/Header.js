@@ -2,7 +2,7 @@ const Header = (props) => {
 
   return (
     <div className="app-header">
-      <h1>Habitude</h1>
+      <h1><a href="/">Habitude</a></h1>
       <nav>
         <ul className="nav-bar">
           <li>
