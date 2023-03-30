@@ -1,18 +1,23 @@
+import { Link } from "react-router-dom";
+
 const Header = (props) => {
 
   return (
     <div className="app-header">
-      <h1><a href="/">Habitude</a></h1>
+      <Link className="hero" to="/"><h1>Habitude</h1></Link>
       <nav>
         <ul className="nav-bar">
           <li>
-            <a href="/about">about</a>
+            <Link to="/">home</Link>
           </li>
           <li>
-            <a href="/add">add</a>
+            <Link to="/about">about</Link>
           </li>
           <li>
-            <a href="/contact">contact</a>
+            <Link to="/add">add</Link>
+          </li>
+          <li>
+            <Link to="/contact">contact</Link>
           </li>
           <input type="text" placeholder="Search..." />
         </ul>
