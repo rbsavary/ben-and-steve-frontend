@@ -28,7 +28,7 @@ const App = () => {
 
   const handleDelete = (deletedPost) => {
     axios.delete('http://127.0.0.1:3000/posts/' + deletedPost._id)
-    .then((response) => {
+    .then(() => {
       let newPosts = posts.filter((post) => {
         return post._id !== deletedPost._id
       })
@@ -38,7 +38,7 @@ const App = () => {
 
   const handleEdit = (data) => {
     axios.put('http://127.0.0.1:3000/posts/' + data._id, data)
-    .then((response) => {
+    .then(() => {
       let newPosts = posts.map((post) => {
         return post._id !== data._id ? post : data
       })
