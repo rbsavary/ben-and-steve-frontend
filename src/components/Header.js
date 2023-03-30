@@ -13,6 +13,7 @@ const Header = (props) => {
                   <a href="#">add</a>
                   <a href="#">contact</a>
                 <input type="text" placeholder="Search..."/>
+                <input type="submit"/>
               </ul>
             </nav>
           </div>
