@@ -1,14 +1,18 @@
-import { useState, useEffect  } from 'react'
-import axios from 'axios'
-import Post from './components/Post'
-import Add from './components/Add'
-import Edit from './components/Edit'
-import Header from './components/Header'
-import About from './components/About'
+import './App.css';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from 'axios';
+import Posts from './components/Posts';
+import Add from './components/Add';
+import Contact from "./components/Contact";
+// import Edit from './components/Edit';
+import Header from './components/Header';
+import About from './components/About';
 
 const App = () => {
   // State Variables
   const [posts, setPosts] = useState([])
+  
 
   const getPosts = () => {
     axios.get('http://127.0.0.1:3000/posts')
@@ -31,10 +35,15 @@ const App = () => {
     .then((response) => {
       let newPosts = posts.filter((post) => {
         return post._id !== deletedPost._id
+    axios.post('http://127.0.0.1:3000/posts', data)
+      .then((response) => {
+        let newPosts = [...posts, response.data]
+        setPosts(newPosts);
       })
       setPosts(newPosts)
     })
   }
+  };
 
   const handleEdit = (data) => {
     axios.put('http://127.0.0.1:3000/posts/' + data._id, data)
@@ -45,26 +54,24 @@ const App = () => {
       setPosts(newPosts)
     })
   }
-
+  
   useEffect(() => {
     getPosts()
   }, [])
+  
 
   return (
-  <>
-    <Header/>
-    <About/>
-    <Add handleCreate={handleCreate}/>
-    {posts.map((post) => (
-      <>
-        <Post post={post}/>
-        <Edit post={post} handleEdit={handleEdit} />
-        <button onClick={ () => {handleDelete(post) } }>Delete</button>
-      </>
-      )
-    )
-    }
-  </>
+    <BrowserRouter>
+      <Header />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Posts posts={posts} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/add" element={<Add handleCreate={handleCreate} />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 

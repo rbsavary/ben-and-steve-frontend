@@ -1,24 +1,30 @@
+import { Link } from "react-router-dom";
+
 const Header = (props) => {
- 
-    return (
-        <>
-          <div>
-            <h1>Habitude</h1>
-          </div>
-          <div>
-            <nav>
-              <ul>
-                  <a href="#">about</a>
-                  <a href="#">articles</a>
-                  <a href="#">add</a>
-                  <a href="#">contact</a>
-                <input type="text" placeholder="Search..."/>
-                <input type="submit"/>
-              </ul>
-            </nav>
-          </div>
-        </>
-    )
+
+  return (
+    <div className="app-header">
+      <Link className="hero" to="/"><h1>Habitude</h1></Link>
+      <nav>
+        <ul className="nav-bar">
+          <li>
+            <Link to="/">home</Link>
+          </li>
+          <li>
+            <Link to="/about">about</Link>
+          </li>
+          <li>
+            <Link to="/add">add</Link>
+          </li>
+          <li>
+            <Link to="/contact">contact</Link>
+          </li>
+          <input type="text" placeholder="Search..." />
+          <input type="submit"/>
+        </ul>
+      </nav>
+    </div>
+  )
 }
 
 export default Header
