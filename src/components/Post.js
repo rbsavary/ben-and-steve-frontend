@@ -2,15 +2,17 @@ const Post = ({ post }) => {
 
   return (
     <>
-      <div>
-        <h2>For Your Reading Pleasure</h2>
-        <h3>{post.title}</h3>
-        <img alt="" src={post.image}></img>
-        <article>{post.article}</article>
-        <p>{post.author}</p>
-        <p>{post.date}</p>
-        <p>{post.tags}</p>
-      </div>
+      <div class="card text-center" >
+  <img class="card-img-top" src={post.image} alt="Card image"/>
+  <div class="card-body">
+    <h2 class="card-title">{post.title}</h2>
+    <p class="card-text">{post.article}</p>
+    <p class="card-text">Author: {post.author}</p>
+        <p class="card-text">{post.date}</p>
+        <p class="card-text">Tags: {post.tags}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
     </>
   )
 }

@@ -4,23 +4,24 @@ const Header = (props) => {
 
   return (
     <div className="app-header">
-      <Link className="hero" to="/"><h1>Habitude</h1></Link>
-      <nav>
-        <ul className="nav-bar">
-          <li>
+      <Link className="hero" id="title" to="/"><h1>Habitude</h1></Link>
+      <nav class="nav d-flex justify-content-around" >
+          <a>
             <Link to="/">home</Link>
-          </li>
-          <li>
+          </a>
+          <a>
             <Link to="/about">about</Link>
-          </li>
-          <li>
+          </a>
+          <a>
             <Link to="/add">add</Link>
-          </li>
-          <li>
+          </a>
+          <a>
             <Link to="/contact">contact</Link>
-          </li>
+          </a>
+          <form class="form-inline">
           <input type="text" placeholder="Search..." />
-        </ul>
+          <input type="submit"/>
+          </form> 
       </nav>
     </div>
   )

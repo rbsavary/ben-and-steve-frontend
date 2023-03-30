@@ -54,9 +54,9 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <div className="container">
+      <About path="/about" element={<About />}/>
         <Routes>
           <Route path="/" element={<Posts posts={posts} />} />
-          <Route path="/about" element={<About />} />
           <Route path="/add" element={<Add handleCreate={handleCreate} />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
