@@ -16,6 +16,9 @@
   align-items: center;
   justify-content: center;
 }
-h2 {
-  justify-content: center;
+footer {
+  min-height: 50px;
+  }
+#contact-img {
+  padding-bottom: 20px;
 }

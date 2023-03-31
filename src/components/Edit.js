@@ -1,4 +1,5 @@
 import {useState} from 'react'
+
 const Edit = (props) => {
   const [post, setPost] = useState({...props.post})
 

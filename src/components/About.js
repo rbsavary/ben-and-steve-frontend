@@ -1,10 +1,9 @@
 const About = (props) => {
     return (
         <>
-            
+    <h2 class="text-center">About</h2>       
     <div class="card">
-    <h2 class="card-title text-center">About</h2>
-    <img class="card-img" src="https://i.imgur.com/edugMv6.jpeg" alt="Card image"/>
+    <img class="card-img" src="https://i.imgur.com/edugMv6.jpeg" alt=""/>
     <div class="card-body">
     <p class="card-text">Welcome to Habitude, the online sanctuary where you can become the superhero version of yourself. We are dedicated to providing you with the most comprehensive and effective resources for personal development and self-mastery.</p>
     <p class="card-text">At Habitude, we believe that everyone has the potential to be their own superhero. We understand that the journey towards self-improvement can be challenging, and that's why we are committed to providing you with the tools and support you need to succeed. Our articles and resources cover a wide range of topics, including mindfulness, goal setting, productivity, and positive habits, just to name a few.</p>
@@ -13,7 +12,7 @@ const About = (props) => {
     <p class="card-text">Taking you to new heights and helping you get to the top of the mountain, unleash your full potential and achieve the life of your dreams together on Habitude.</p>
     </div>
     </div>
-        </>
+    </>
     )
 }
 
