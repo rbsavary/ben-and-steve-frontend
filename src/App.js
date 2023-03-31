@@ -26,15 +26,15 @@ const App = () => {
       })
   };
 
-  // const handleDelete = (deletedPost) => {
-  //   axios.delete('http://127.0.0.1:3000/posts/' + deletedPost._id)
-  //     .then((response) => {
-  //       let newPosts = posts.filter((post) => {
-  //         return post._id !== deletedPost._id
-  //       })
-  //       setPosts(newPosts);
-  //     })
-  // };
+  const handleDelete = (deletedPost) => {
+    axios.delete('http://127.0.0.1:3000/posts/' + deletedPost._id)
+      .then((response) => {
+        let newPosts = posts.filter((post) => {
+          return post._id !== deletedPost._id
+        })
+        setPosts(newPosts);
+      })
+  };
 
   const handleEdit = (data) => {
     axios.put('http://127.0.0.1:3000/posts/' + data._id, data)
@@ -55,7 +55,7 @@ const App = () => {
       <Header />
       <div className="container">
         <Routes>
-          <Route path="/" element={<Posts posts={posts} />} />
+          <Route path="/" element={<Posts handleDelete={handleDelete} posts={posts} />} />
           <Route path="/about" element={<About />} />
           <Route path="/add" element={<Add handleCreate={handleCreate} />} />
           <Route path="/contact" element={<Contact />} />

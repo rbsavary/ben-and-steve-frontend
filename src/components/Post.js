@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const Post = ({ post }) => {
+const Post = ({ post, handleDelete }) => {
 
   return (
     <div className="post">
@@ -9,7 +9,8 @@ const Post = ({ post }) => {
       <p>By: {post.author} - {post.tags}</p>
       <p>{post.date}</p>
       <p>{post.article}</p>
-      <Link to={`/edit/${post._id}`}>Edit</Link>
+      <NavLink className="btn btn-primary" to={`/edit/${post._id}`}>Edit</NavLink>&nbsp;
+      <button className="btn btn-danger" onClick={() => handleDelete(post)}>Delete</button>
     </div>
   )
 }
