@@ -1,17 +1,16 @@
+import { Link } from "react-router-dom";
+
 const Post = ({ post }) => {
 
   return (
-    <>
-      <div>
-        <h2>For Your Reading Pleasure</h2>
-        <h3>{post.title}</h3>
-        <img alt="" src={post.image}></img>
-        <article>{post.article}</article>
-        <p>{post.author}</p>
-        <p>{post.date}</p>
-        <p>{post.tags}</p>
-      </div>
-    </>
+    <div className="post">
+      <h3>{post.title}</h3>
+      <img alt="" src={post.image}></img>
+      <p>By: {post.author} - {post.tags}</p>
+      <p>{post.date}</p>
+      <p>{post.article}</p>
+      <Link to={`/edit/${post._id}`}>Edit</Link>
+    </div>
   )
 }
 

@@ -41,7 +41,12 @@ nav a {
   font-weight: 700;
 }
 
-nav a:hover {
+.post a {
+  color: #000;
+  text-decoration: none;
+}
+
+nav a:hover, .post a:hover {
   color: grey;
 }
 
@@ -54,6 +59,10 @@ nav a:hover {
   color: #fff;
 }
 
-.contact-form {
+.contact-form, .edit-form {
   margin: 0 25rem;
+}
+
+.post {
+  margin: 50px 0;
 }
