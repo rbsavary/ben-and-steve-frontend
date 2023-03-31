@@ -55,10 +55,18 @@ const App = () => {
       <Header />
       <div className="container">
         <Routes>
-          <Route path="/" element={<Posts handleDelete={handleDelete} posts={posts} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/add" element={<Add handleCreate={handleCreate} />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/"
+            element={<Posts handleDelete={handleDelete} posts={posts} />} />
+          <Route
+            path="/about"
+            element={<About />} />
+          <Route
+            path="/add"
+            element={<Add handleCreate={handleCreate} />} />
+          <Route
+            path="/contact"
+            element={<Contact />} />
           <Route
             path="/edit/:id"
             element={<Edit posts={posts} handleEdit={handleEdit} />} />

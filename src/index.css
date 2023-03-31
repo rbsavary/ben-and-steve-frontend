@@ -59,7 +59,7 @@ nav a:hover, .post a:hover {
   color: #fff;
 }
 
-.contact-form, .edit-form {
+.contact-form, .edit-form, .add-form {
   margin: 0 25rem;
 }
 
