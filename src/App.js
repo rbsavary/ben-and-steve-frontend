@@ -47,11 +47,6 @@ const App = () => {
       })
   };
 
-  const handleChange = (value) => {
-    setInput(value)
-    fetchData(value)
-  }
-
   useEffect(() => {
     getPosts()
   }, []);
