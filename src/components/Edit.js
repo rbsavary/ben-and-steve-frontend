@@ -1,44 +1,84 @@
-import {useState} from 'react'
-const Edit = (props) => {
-  const [post, setPost] = useState({...props.post})
+import { useState } from 'react'
+import { useParams, useNavigate } from "react-router-dom";
 
-  const handleChange = (event) => {
-    setPost({...post, [event.target.name]: event.target.value})
-   }
+const Edit = ({ posts, handleEdit }) => {
+  const { id } = useParams();
+  const post = posts.filter(post => post._id === id)[0];
+  const [currentPost, setPost] = useState({ ...post });
+  const navigate = useNavigate();
 
-   const handleSubmit = (event) => {
-      event.preventDefault()
-      props.handleEdit(post)
-   }
+  const handleChange = e => {
+    setPost({ ...currentPost, [e.target.name]: e.target.value })
+  }
 
-  return(
-    <>
-      <details>
-        <summary>Edit Article</summary>
-        <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title: </label>
-                <input type="text" name="title" onChange={handleChange}/>
-                <br/>
-                <br/>
-                <label htmlFor="image">Image: </label>
-                <input type="text" name="image" onChange={handleChange}/>
-                <br/>
-                <br/>
-                <label htmlFor="article">Article: </label>
-                <input type="text" name="article" onChange={handleChange}/>
-                <br/>
-                <br/><label htmlFor="author">Author: </label>
-                <input type="text" name="author" onChange={handleChange}/>
-                <br/>
-                <br/><label htmlFor="date">Date: </label>
-                <input type="date" name="date" onChange={handleChange}/>
-                <br/>
-                <br/><label htmlFor="tags">Tags: </label>
-                <input type="text" name="tags" onChange={handleChange}/>
-                <input type="submit"/>
-            </form>
-      </details>
-    </>
+  const handleSubmit = e => {
+    e.preventDefault();
+    handleEdit(currentPost);
+    navigate("/");
+  }
+
+  return (
+    <div className="edit-form">
+      <h2>Edit Article</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="title">Title: </label>
+          <input
+            className="form-control"
+            type="text"
+            name="title"
+            value={currentPost.title}
+            onChange={handleChange} />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="image">Image: </label>
+          <input
+            className="form-control"
+            type="text"
+            name="image"
+            value={currentPost.image || ""}
+            onChange={handleChange} />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="author">Author: </label>
+          <input
+            className="form-control"
+            type="text"
+            name="author"
+            value={currentPost.author}
+            onChange={handleChange} />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="date">Date: </label>
+          <input
+            className="form-control"
+            type="text"
+            name="date"
+            value={currentPost.date}
+            onChange={handleChange} />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="tags">Tags: </label>
+          <input
+            className="form-control"
+            type="text"
+            name="tags"
+            value={currentPost.tags}
+            onChange={handleChange} />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="article">Article: </label>
+          <textarea
+            className="form-control"
+            name="article"
+            id="article"
+            onChange={handleChange}
+            value={currentPost.article}
+            rows="3"></textarea>
+        </div>
+        <input className="btn btn-primary btn-lg" type="submit" value="submit" />
+      </form>
+    </div>
   )
 }
 

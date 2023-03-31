@@ -1,47 +1,86 @@
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
-const Add = (props) => {
-    const [post, setPost] = useState({name: '', age: 0})
+const Add = ({ handleCreate }) => {
+    const [post, setPost] = useState({});
+    const navigate = useNavigate();
 
 
-    const handleChange = (event) => {
-        setPost({...post, [event.target.name]: event.target.value})
+    const handleChange = e => {
+        setPost({ ...post, [e.target.name]: e.target.value });
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        props.handleCreate(post)
+    const handleSubmit = e => {
+        e.preventDefault();
+        handleCreate(post);
+        navigate("/");
     }
-
-
-
 
     return (
-        <>
+        <div className="add-form">
             <h2>Add Article</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title: </label>
-                <input type="text" name="title" onChange={handleChange}/>
-                <br/>
-                <br/>
-                <label htmlFor="image">Image: </label>
-                <input type="text" name="image" onChange={handleChange}/>
-                <br/>
-                <br/>
-                <label htmlFor="article">Article: </label>
-                <input type="text" name="article" onChange={handleChange}/>
-                <br/>
-                <br/><label htmlFor="author">Author: </label>
-                <input type="text" name="author" onChange={handleChange}/>
-                <br/>
-                <br/><label htmlFor="date">Date: </label>
-                <input type="date" name="date" onChange={handleChange}/>
-                <br/>
-                <br/><label htmlFor="tags">Tags: </label>
-                <input type="text" name="tags" onChange={handleChange}/>
-                <input type="submit"/>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="title">Title: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="title"
+                        id="title"
+                        onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="image">Image: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="image"
+                        id="image"
+                        onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="author">Author: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="author"
+                        id="author"
+                        onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="date">Date: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="date"
+                        id="date"
+                        onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="tags">Tags: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="tags"
+                        id="tags"
+                        onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="article">Article: </label>
+                    <textarea
+                        className="form-control"
+                        type="text"
+                        name="article"
+                        id="article"
+                        rows="3"
+                        onChange={handleChange} />
+                </div>
+                <input
+                    className="btn btn-secondary btn-lg"
+                    type="submit"
+                    value="submit" />
             </form>
-        </>
+        </div>
     )
 }
 
