@@ -12,7 +12,7 @@ import Footer from './components/Footer'
 
 const App = () => {
   const [posts, setPosts] = useState([]);
-
+  const [message, setMessage ] = useState("")
   const getPosts = () => {
     axios.get('http://127.0.0.1:3000/')
       .then((response) => setPosts(response.data))
@@ -22,7 +22,7 @@ const App = () => {
   const handleCreate = (data) => {
     axios.post('http://127.0.0.1:3000/posts', data)
       .then((response) => {
-        let newPosts = [...posts, response.data]
+        let newPosts = [...posts, response.data];
         setPosts(newPosts);
       })
   };
@@ -41,11 +41,18 @@ const App = () => {
     axios.put('http://127.0.0.1:3000/posts/' + data._id, data)
       .then((response) => {
         let newPosts = posts.map((post) => {
-          return post._id !== data._id ? post : data
+          return post._id !== data._id ? post : response.data
         })
         setPosts(newPosts);
       })
   };
+
+  const handleContacts = (data) => {
+    console.log(data)
+    axios.post('http://127.0.0.1:3000/contacts', data).then((response) => {
+        alert("We have received your comments!")
+      })
+  } 
 
   useEffect(() => {
     getPosts()
@@ -55,12 +62,23 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <div className="container">
+        {message}
         <Routes>
-          <Route path="/" element={<Posts posts={posts} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/add" element={<Add handleCreate={handleCreate} />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/edit" element={<Edit handleEdit={handleEdit} />} /> */}
+          <Route
+            path="/"
+            element={<Posts handleDelete={handleDelete} posts={posts} />} />
+          <Route
+            path="/about"
+            element={<About />} />
+          <Route
+            path="/add"
+            element={<Add handleCreate={handleCreate} />} />
+          <Route
+            path="/contact"
+            element={<Contact handleContacts={handleContacts} />} />
+          <Route
+            path="/edit/:id"
+            element={<Edit posts={posts} handleEdit={handleEdit} />} />
         </Routes>
       </div>
       <Footer />

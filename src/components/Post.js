@@ -1,21 +1,18 @@
-import { Link } from "react-router-dom";
-const Post = ({ post }) => {
+import { NavLink } from "react-router-dom";
+
+const Post = ({ post, handleDelete }) => {
 
   return (
-    <>
-      <div class="card text-center" >
-      <h2 class="card-title">{post.title}</h2>
-        <img class="card-img-top" src={post.image} alt="Card image"/>
-  <   div class="card-body">
-        
-        <p class="card-text">{post.article}</p>
-        <p class="card-text">Author: {post.author}</p>
-        <p class="card-text">{post.date}</p>
-        <p class="card-text">Tags: {post.tags}</p>
-        <Link to="/edit" class="btn btn-primary" >Edit</Link>
-  </div>
-</div>
-    </>
+    <div>
+      <h3 className="text-center">{post.title}</h3>
+      <img className="card-img-top" src={post.image} alt="Card image"/>
+      <div className="card-body"></div>
+      <p>By: {post.author} - {post.tags}</p>
+      <p>{post.date}</p>
+      <p>{post.article}</p>
+      <NavLink className="btn btn-primary" to={`/edit/${post._id}`}>Edit</NavLink>&nbsp;
+      <button className="btn btn-danger" onClick={() => handleDelete(post)}>Delete</button>
+    </div>
   )
 }
 

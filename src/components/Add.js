@@ -1,54 +1,86 @@
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
-const Add = (props) => {
-    const [post, setPost] = useState({name: '', age: 0})
+const Add = ({ handleCreate }) => {
+    const [post, setPost] = useState({});
+    const navigate = useNavigate();
 
 
-    const handleChange = (event) => {
-        setPost({...post, [event.target.name]: event.target.value})
+    const handleChange = e => {
+        setPost({ ...post, [e.target.name]: e.target.value });
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        props.handleCreate(post)
+    const handleSubmit = e => {
+        e.preventDefault();
+        handleCreate(post);
+        navigate("/");
     }
 
     return (
-        <>
-            <h2 class="text-center">Add Article</h2>
-            
+        <div className="add-form">
+            <h2>Add Article</h2>
             <form onSubmit={handleSubmit}>
-            <div className="form-group">
                 <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" name="full-name" className="form-control" id="title" onChange={handleChange}/>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="image" className="form-label">Image</label>
-                    <input type="text" name="image" className="form-control" id="image" onChange={handleChange} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="article" className="form-label">Article</label>
-                    <textarea className="form-control" name="article" id="article" rows="10" onChange={handleChange}></textarea>
+                    <label className="form-label" htmlFor="title">Title: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="title"
+                        id="title"
+                        onChange={handleChange} />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="author" className="form-label">Author</label>
-                    <input type="text" name="author" className="form-control" id="author" onChange={handleChange} />
+                    <label className="form-label" htmlFor="image">Image: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="image"
+                        id="image"
+                        onChange={handleChange} />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="date" className="form-label">Date</label>
-                    <input type="date" name="date" className="form-control" id="date" onChange={handleChange}/>
+                    <label className="form-label" htmlFor="author">Author: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="author"
+                        id="author"
+                        onChange={handleChange} />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="tags" className="form-label">Tags </label>
-                    <input type="text" name="tags" className="form-control" id="tags" onChange={handleChange}/>
+                    <label className="form-label" htmlFor="date">Date: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="date"
+                        id="date"
+                        onChange={handleChange} />
                 </div>
-                <div>
-                    <input class="btn btn-primary" type="submit" value="Submit"></input>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="tags">Tags: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="tags"
+                        id="tags"
+                        onChange={handleChange} />
                 </div>
-            </div>
-        </form>
-        </>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="article">Article: </label>
+                    <textarea
+                        className="form-control"
+                        type="text"
+                        name="article"
+                        id="article"
+                        rows="3"
+                        onChange={handleChange} />
+                </div>
+                <input
+                    className="btn btn-secondary btn-lg"
+                    type="submit"
+                    value="Submit" />
+            </form>
+        </div>
     )
 }
 export default Add
