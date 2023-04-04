@@ -10,15 +10,20 @@ import Header from './components/Header';
 import About from './components/About';
 import Footer from './components/Footer'
 
+//Hooks to manage state
 const App = () => {
   const [posts, setPosts] = useState([]);
-  const [message, setMessage ] = useState("")
+  const [message, setMessage ] = useState("");
+  
+//The axios library is used to make HTTP requests to a backend server running on the local host at port 3000. The getPosts, handleCreate, handleDelete, handleEdit, and handleContacts functions define the behavior for handling HTTP requests for reading, creating, deleting, updating, and posting contact information to the server, respectively.
+
+//Posts
   const getPosts = () => {
     axios.get('http://127.0.0.1:3000/')
       .then((response) => setPosts(response.data))
       .catch((error) => console.log(error))
   };
-
+//Add
   const handleCreate = (data) => {
     axios.post('http://127.0.0.1:3000/posts', data)
       .then((response) => {
@@ -26,7 +31,7 @@ const App = () => {
         setPosts(newPosts);
       })
   };
-
+//Delete
   const handleDelete = (deletedPost) => {
     axios.delete('http://127.0.0.1:3000/posts/' + deletedPost._id)
       .then((response) => {
@@ -36,7 +41,7 @@ const App = () => {
         setPosts(newPosts);
       })
   };
-
+//Edit
   const handleEdit = (data) => {
     axios.put('http://127.0.0.1:3000/posts/' + data._id, data)
       .then((response) => {
@@ -46,17 +51,20 @@ const App = () => {
         setPosts(newPosts);
       })
   };
-
+//Contacts
   const handleContacts = (data) => {
     console.log(data)
     axios.post('http://127.0.0.1:3000/contacts', data).then((response) => {
         alert("We have received your comments!")
       })
   } 
-
+//Hook used to fetch posts
   useEffect(() => {
     getPosts()
   }, []);
+
+
+// The BrowserRouter component from the react-router-dom module is used to define the routing for the web application. It wraps the Header, Routes, and Footer components, which are defined in separate files. The Routes component defines the mapping between the URL paths and the corresponding components to be rendered.
 
   return (
     <BrowserRouter>
