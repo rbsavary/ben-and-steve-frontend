@@ -15,17 +15,17 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   const [message, setMessage ] = useState("");
   
-//The axios library is used to make HTTP requests to a backend server running on the local host at port 3000. The getPosts, handleCreate, handleDelete, handleEdit, and handleContacts functions define the behavior for handling HTTP requests for reading, creating, deleting, updating, and posting contact information to the server, respectively.
+//Axios is used to make HTTP requests to a backend server running on the local host at port 3000. The getPosts, handleCreate, handleDelete, handleEdit, and handleContacts functions define the behavior for handling HTTP requests for reading, creating, deleting, updating, and posting contact information to the server, respectively.
 
-//Posts
+//Read
   const getPosts = () => {
-    axios.get('http://127.0.0.1:3000/')
+    axios.get('https://ben-and-steve.herokuapp.com/')
       .then((response) => setPosts(response.data))
       .catch((error) => console.log(error))
   };
-//Add
+//Create
   const handleCreate = (data) => {
-    axios.post('http://127.0.0.1:3000/posts', data)
+    axios.post('https://ben-and-steve.herokuapp.com/posts', data)
       .then((response) => {
         let newPosts = [...posts, response.data];
         setPosts(newPosts);
@@ -33,7 +33,7 @@ const App = () => {
   };
 //Delete
   const handleDelete = (deletedPost) => {
-    axios.delete('http://127.0.0.1:3000/posts/' + deletedPost._id)
+    axios.delete('https://ben-and-steve.herokuapp.com/posts/' + deletedPost._id)
       .then((response) => {
         let newPosts = posts.filter((post) => {
           return post._id !== deletedPost._id
@@ -43,7 +43,7 @@ const App = () => {
   };
 //Edit
   const handleEdit = (data) => {
-    axios.put('http://127.0.0.1:3000/posts/' + data._id, data)
+    axios.put('https://ben-and-steve.herokuapp.com/posts/' + data._id, data)
       .then((response) => {
         let newPosts = posts.map((post) => {
           return post._id !== data._id ? post : response.data
@@ -54,7 +54,7 @@ const App = () => {
 //Contacts
   const handleContacts = (data) => {
     console.log(data)
-    axios.post('http://127.0.0.1:3000/contacts', data).then((response) => {
+    axios.post('https://ben-and-steve.herokuapp.com/contacts', data).then((response) => {
         alert("We have received your comments!")
       })
   } 
