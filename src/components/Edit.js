@@ -76,7 +76,7 @@ const Edit = ({ posts, handleEdit }) => {
             value={currentPost.article}
             rows="3"></textarea>
         </div>
-        <input className="btn btn-primary btn-lg" type="submit" value="submit" />
+        <input className="btn btn-primary btn-lg" type="submit" value="Submit" />
       </form>
     </div>
   )
