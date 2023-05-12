@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const Add = ({ handleCreate }) => {
     const [post, setPost] = useState({});
@@ -67,7 +69,7 @@ const Add = ({ handleCreate }) => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label" htmlFor="article">Article: </label>
-                    <textarea
+                    <ReactQuill
                         className="form-control"
                         type="text"
                         name="article"
