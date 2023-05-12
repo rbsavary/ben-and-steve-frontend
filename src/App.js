@@ -19,13 +19,13 @@ const App = () => {
 
 //Read
   const getPosts = () => {
-    axios.get('https://habitude-backend.herokuapp.com/')
+    axios.get('https://ben-and-steve-backend.herokuapp.com/posts/')
       .then((response) => setPosts(response.data))
       .catch((error) => console.log(error))
   };
 //Create
   const handleCreate = (data) => {
-    axios.post('https://habitude-backend.herokuapp.com/posts', data)
+    axios.post('https://ben-and-steve-backend.herokuapp.com/posts', data)
       .then((response) => {
         let newPosts = [...posts, response.data];
         setPosts(newPosts);
@@ -33,7 +33,7 @@ const App = () => {
   };
 //Delete
   const handleDelete = (deletedPost) => {
-    axios.delete('https://habitude-backend.herokuapp.com/posts/' + deletedPost._id)
+    axios.delete('https://ben-and-steve-backend.herokuapp.com/posts/' + deletedPost._id)
       .then((response) => {
         let newPosts = posts.filter((post) => {
           return post._id !== deletedPost._id
@@ -43,7 +43,7 @@ const App = () => {
   };
 //Edit
   const handleEdit = (data) => {
-    axios.put('https://habitude-backend.herokuapp.com/posts/' + data._id, data)
+    axios.put('https://ben-and-steve-backend.herokuapp.com/posts/' + data._id, data)
       .then((response) => {
         let newPosts = posts.map((post) => {
           return post._id !== data._id ? post : response.data
@@ -54,7 +54,7 @@ const App = () => {
 //Contacts
   const handleContacts = (data) => {
     console.log(data)
-    axios.post('https://habitude-backend.herokuapp.com/contacts', data).then((response) => {
+    axios.post('https://ben-and-steve-backend.herokuapp.com/contacts', data).then((response) => {
         alert("We have received your comments!")
       })
   } 
